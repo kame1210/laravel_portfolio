@@ -44,7 +44,7 @@ class ItemSubmitController extends Controller
 
         if ($file = $request->file('image')) {
             $fileName = time() . $file->getClientOriginalName();
-            $targetPath = storage_path('app\public\uploads');
+            $targetPath = storage_path('app/public/uploads');
             $file->move($targetPath, $fileName);
 
             $item = Item::create([
