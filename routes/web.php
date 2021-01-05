@@ -54,6 +54,12 @@ Route::get('/list', 'ListController@index')->name('list');
 Route::post('/cart/update', 'CartController@amountUpdate');
 
 Route::get('/order', 'OrderController@index')->name('order');
+
+Route::get('/mypage', 'MypageController@index')->name('mypage');
+
+Route::get('/mypage/userInfo', 'MypageController@userInfo')->name('userInfo');
+
+
 // Route::get('mail/pre', function () {
 //   return new \App\Mail\ContactMail();
 // });
