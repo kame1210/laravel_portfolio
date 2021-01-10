@@ -3,27 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 use App\Item;
 use App\Category;
-use Illuminate\Support\Facades\Auth;
+use App\Like;
 
 class IndexController extends Controller
 {
     //
     public function index()
     {
-        // $user = Auth::user();
+        $items = Item::where('ctg_id', '=', '1')
+            ->get();
+        $howtoItems = Item::where('ctg_id', '=', '2')
+            ->get();
+        $eventItems = Item::where('ctg_id', '=', '3')
+            ->get();
 
-        // $user_name = $user->family_name . $user->first_name;
-        // $user_id = $user->user_id;
-
-        $items = Item::where('ctg_id', '=', '1')->get();
-        $howtoItems = Item::where('ctg_id', '=', '2')->get();
-        $eventItems = Item::where('ctg_id', '=', '3')->get();
+        $like_count = Like::select('item_id', DB::raw('count(user_id) as likes'))
+            ->groupby('item_id')
+            ->get();
 
         $categories = Category::all()->toArray();
-        // $imagePath = public_path('uploads\\');
 
-        return view('index', compact('items', 'howtoItems', 'eventItems', 'categories'));
+        return view('index', compact('items', 'howtoItems', 'eventItems', 'categories', 'like_count'));
     }
 }

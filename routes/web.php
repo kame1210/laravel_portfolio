@@ -59,6 +59,13 @@ Route::get('/mypage', 'MypageController@index')->name('mypage');
 
 Route::get('/mypage/userInfo', 'MypageController@userInfo')->name('userInfo');
 
+Route::get('/mypage/likeItem', 'MypageController@likeItem')->name('likeItem');
+
+Route::get('/mypage/submitItem', 'MypageController@submitItem')->name('submitItem');
+
+Route::post('/like', 'LikeController@like')->name('like');
+
+
 
 // Route::get('mail/pre', function () {
 //   return new \App\Mail\ContactMail();
