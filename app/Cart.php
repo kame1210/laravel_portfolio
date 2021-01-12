@@ -18,18 +18,44 @@ class Cart extends Model
         'item_id',
     ];
 
-    public function item(){
-        return $this->belongsTo('\App\Item', 'item_id', 'item_id');
+    // public function item(){
+    //     return $this->belongsTo('\App\Item', 'item_id', 'item_id');
+    // }
+
+    public function item()
+    {
+        return $this->hasMany('App\Item', 'item_id', 'item_id');
     }
 
-    public function getCart($user_id){
-        $cartItem = DB::table('carts')
-        ->join('items', 'carts.item_id' , '=', 'items.item_id' )
-        ->select('carts.*', 'items.*')
-        ->where('carts.user_id', '=', $user_id) 
-        ->get()
-        ->toArray();
+    public static function getCart($user_id)
+    {
+        $cart_item = DB::table('carts')
+            ->join('items', 'carts.item_id', '=', 'items.item_id')
+            ->select('carts.*', 'items.*')
+            ->where('carts.user_id', '=', $user_id)
+            ->get()
+            ->toArray();
 
-        return $cartItem;
+        return $cart_item;
+    }
+
+    public static function getSumPrice($user_id)
+    {
+        $sum_price = DB::table('carts')
+        ->join('items', 'carts.item_id', '=', 'items.item_id')
+        ->where('carts.user_id', '=', $user_id)
+        ->sum(DB::raw('items.price * carts.amount'));
+
+        return $sum_price;
+    }
+
+    public static function getSumAmount($user_id)
+    {
+        $sum_amount = DB::table('carts')
+        ->join('items', 'carts.item_id', '=', 'items.item_id')
+        ->where('carts.user_id', '=', $user_id)
+        ->sum('carts.amount');
+
+        return $sum_amount;
     }
 }

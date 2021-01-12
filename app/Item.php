@@ -30,6 +30,8 @@ class Item extends Model
         return $this->hasMany('App\Cart', 'item_id');
     }
 
+
+
     // public static function getItemDetail($item_id){
     //     return DB::find($item_id)->toArray();
     // }

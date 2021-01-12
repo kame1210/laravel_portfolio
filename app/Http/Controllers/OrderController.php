@@ -14,24 +14,19 @@ class OrderController extends Controller
     //
     public function index()
     {
-        $cart = new Cart();
-        $user = new User();
         $user_id = Auth::id();
 
-        $cartItem = $cart->getCart($user_id);
+        $cart_item = Cart::getCart($user_id);
 
-        if (empty($cartItem)) {
+        if (empty($cart_item)) {
             return redirect('/cart')
                 ->with('error', '買い物カゴは空です');
         }
 
-        $sumPrice = DB::table('carts')
-            ->join('items', 'carts.item_id', '=', 'items.item_id')
-            ->where('carts.user_id', '=', $user_id)
-            ->sum(DB::raw('items.price * carts.amount'));
+        $sum_price = Cart::getSumPrice($user_id);
 
-        $userData = $user->find($user_id);
+        $user_data = User::find($user_id);
 
-        return view('order.index', compact('userData', 'cartItem', 'sumPrice'));
+        return view('order.index', compact('user_data', 'cart_item', 'sum_price'));
     }
 }

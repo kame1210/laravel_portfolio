@@ -41,6 +41,30 @@
             <a href="{!! url('item/detail/' . $item['item_id']) !!}">{{ $item['item_name'] }}</a>
           </li>
           <li class="price">&yen;{{$item['price']}}</li>
+          <li class="likes">
+            <div class="btn-like" data-item-id="{{$item['item_id']}}">
+              @if(My_function::like_exists(Auth::id(), 1))
+              <i class="fas red fa-heart" style="color:red;">
+                <span>
+                  @foreach ($like_count as $like)
+                  @if ($like['item_id'] === $item['item_id'])
+                  {{ $like['likes'] }}
+                  @endif
+                  @endforeach
+                </span>
+              </i>
+              @else
+              <i class="far fa-heart">
+                <span>
+                  @foreach ($like_count as $like)
+                  @if ($like['item_id'] === $item['item_id'])
+                  {{ $like['likes'] }}
+                  @endif
+                  @endforeach
+                </span>
+              </i>
+              @endif
+          </li>
           {{-- {% include "viewlikes.html.twig" %} --}}
         </ul>
       </div>
@@ -64,17 +88,27 @@
           <li class="price">&yen;{{$item['price']}}</li>
           <li class="likes">
             <div class="btn-like" data-item-id="{{$item['item_id']}}">
-              {{-- {% if id | length > 0 %}
-              {% if  like_exsits(value.item_id) == true %} --}}
-              <i class="fas red fa-heart">
+              @if(My_function::like_exists(Auth::id(), 1))
+              <i class="fas red fa-heart" style="color:red;">
                 <span>
-                  {{-- @foreach ($likeCount as $like)
+                  @foreach ($like_count as $like)
                   @if ($like['item_id'] === $item['item_id'])
-                  {{like.likes}}
+                  {{ $like['likes'] }}
                   @endif
-                  @endforeach --}}
+                  @endforeach
                 </span>
               </i>
+              @else
+              <i class="far fa-heart">
+                <span>
+                  @foreach ($like_count as $like)
+                  @if ($like['item_id'] === $item['item_id'])
+                  {{ $like['likes'] }}
+                  @endif
+                  @endforeach
+                </span>
+              </i>
+              @endif
           </li>
         </ul>
       </div>
@@ -97,6 +131,30 @@
           </li>
           <li class="price">&yen;{{$item['price']}}</li>
           {{-- {% include "viewlikes.html.twig" %} --}}
+          <li class="likes">
+            <div class="btn-like" data-item-id="{{$item['item_id']}}">
+              @if(My_function::like_exists(Auth::id(), 1))
+              <i class="fas red fa-heart" style="color:red;">
+                <span>
+                  @foreach ($like_count as $like)
+                  @if ($like['item_id'] === $item['item_id'])
+                  {{ $like['likes'] }}
+                  @endif
+                  @endforeach
+                </span>
+              </i>
+              @else
+              <i class="far fa-heart">
+                <span>
+                  @foreach ($like_count as $like)
+                  @if ($like['item_id'] === $item['item_id'])
+                  {{ $like['likes'] }}
+                  @endif
+                  @endforeach
+                </span>
+              </i>
+              @endif
+          </li>
         </ul>
       </div>
       @endforeach

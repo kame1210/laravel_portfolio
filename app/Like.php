@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Like extends Model
 {
     //
-    protected $primarykey = 'like_id';
+    protected $primaryKey = 'like_id';
 
     protected $fillable = [
         'user_id',
@@ -16,6 +16,6 @@ class Like extends Model
 
     public function item()
     {
-        return $this->hasOne('App\Item', 'item_id');
+        return $this->hasMany('App\Item', 'item_id', 'item_id');
     }
 }

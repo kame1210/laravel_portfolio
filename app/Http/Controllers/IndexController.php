@@ -4,16 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 use App\Item;
 use App\Category;
 use App\Like;
+use App\My_function;
 
 class IndexController extends Controller
 {
     //
     public function index()
     {
+        $user_id = Auth::id();
+
         $items = Item::where('ctg_id', '=', '1')
             ->get();
         $howtoItems = Item::where('ctg_id', '=', '2')

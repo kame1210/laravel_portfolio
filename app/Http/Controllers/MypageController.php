@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Like;
 use App\Item;
+use App\Order;
 use App\InitMaster;
 
 class MypageController extends Controller
@@ -33,21 +34,32 @@ class MypageController extends Controller
     public function likeItem()
     {
         $user_id = Auth::id();
-        $itemData = Like::where('user_id', $user_id)
-            ->item();
+        $like_data = Like::where('user_id', $user_id)->get();
 
-        dd($itemData);
+        foreach ($like_data as $like) {
+            $like_item[] = $like->item;
+        }
 
-        return view('mypage.likeItem', compact('likeData'));
+        return view('mypage.likeItem', compact('like_item'));
     }
 
-    public function submitItem(){
+    public function submitItem()
+    {
         $user_id = Auth::id();
 
         $itemData = Item::where('user_id', $user_id)
-        ->get();
+            ->get();
 
         return view('mypage.submitItemd
         ', compact('itemData'));
+    }
+
+    public function orderHistory()
+    {
+        $user_id = Auth::id();
+
+        // user_id = $user_id
+        // hasMany order_id = order_detail order_id;
+
     }
 }

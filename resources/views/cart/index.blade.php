@@ -7,20 +7,20 @@
   </button>
   <div id="cart-list">
     @if (session('error'))
-        <p style="color:red;">{{ session('error') }}</p>
+    <p style="color:red;">{{ session('error') }}</p>
     @endif
     <p class="cart-info">カート内商品数 :
-      @if ($sumAmount !== 0)
-      {{$sumAmount}}個
+      @if ($sum_amount !== 0)
+      {{$sum_amount}}個
       @else
       0個
       @endif
-      合計金額 : &yen;{{ number_format($sumPrice) }}
+      合計金額 : &yen;{{ number_format($sum_price) }}
     </p>
-    {{-- {% if dataArr | length == 0 %}
+    {{-- @if ($cart_item == Null || $cart_item->isEmpty())
     <p class="cart-info" style="color:red;">{{ errMsg }}</p>
-    {% else %} --}}
-    @foreach ($cartItem as $item)
+    @endif --}}
+    @foreach ($cart_item as $item)
     <div class="item">
       <div class="image">
         <a href=""><img src="/storage/uploads/{{ $item->image }}" alt="{{$item->item_name}}"></a>
@@ -51,9 +51,9 @@
   </div>
   <div>
     {{-- <form action="{{ route('order') }}" method="post"> --}}
-      {{-- <input type="hidden" name="sumPrice" value="{{sumPrice}}">
-      <input type="hidden" name="sumNum" value="{{sumNum}}"> --}}
-      <button onclick="location.href='{{ route('order') }}'">注文確認画面</button>
+    {{-- <input type="hidden" name="sumPrice" value="{{sumPrice}}">
+    <input type="hidden" name="sumNum" value="{{sumNum}}"> --}}
+    <button onclick="location.href='{{ route('order') }}'">注文確認画面</button>
   </div>
   </form>
 </div>

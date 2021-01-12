@@ -21,21 +21,27 @@ class CartController extends Controller
             return redirect('/login');
         }
 
-        $cartItem = $cart->getCart($user_id);
+        $cart_item = DB::table('carts')
+            ->join('items', 'carts.item_id', '=', 'items.item_id')
+            ->select('carts.*', 'items.*')
+            ->where('carts.user_id', '=', $user_id)
+            ->get();
 
-        $sumPrice = DB::table('carts')
+        // dd($cart_item);
+
+        $sum_price = DB::table('carts')
             ->join('items', 'carts.item_id', '=', 'items.item_id')
             ->where('carts.user_id', '=', $user_id)
             ->sum(DB::raw('items.price * carts.amount'));
 
-        $sumAmount = DB::table('carts')
+        $sum_amount = DB::table('carts')
             ->join('items', 'carts.item_id', '=', 'items.item_id')
             ->where('carts.user_id', '=', $user_id)
             ->sum('carts.amount');
 
         $amounts = InitMaster::getAmount();
 
-        return view('cart.index', compact('cartItem', 'sumPrice', 'sumAmount', 'amounts'));
+        return view('cart.index', compact('cart_item', 'sum_price', 'sum_amount', 'amounts'));
     }
 
     public function cartIn($item_id)
@@ -68,13 +74,12 @@ class CartController extends Controller
     public function cartDelete($crt_id)
     {
         $user_id = Auth::id();
-        $cart = new Cart();
 
         if ($user_id === null) {
             return redirect('/login');
         }
 
-        $cart->where('crt_id', $crt_id)
+        Cart::where('crt_id', $crt_id)
             ->delete();
 
         return redirect('/cart');
