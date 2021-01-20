@@ -25,8 +25,10 @@ class OrderController extends Controller
 
         $sum_price = Cart::getSumPrice($user_id);
 
+        $sum_amount = Cart::getSumAmount($user_id);
+
         $user_data = User::find($user_id);
 
-        return view('order.index', compact('user_data', 'cart_item', 'sum_price'));
+        return view('order.index', compact('user_data', 'cart_item', 'sum_price', 'sum_amount'));
     }
 }

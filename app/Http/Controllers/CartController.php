@@ -21,23 +21,11 @@ class CartController extends Controller
             return redirect('/login');
         }
 
-        $cart_item = DB::table('carts')
-            ->join('items', 'carts.item_id', '=', 'items.item_id')
-            ->select('carts.*', 'items.*')
-            ->where('carts.user_id', '=', $user_id)
-            ->get();
+        $cart_item = Cart::getCart($user_id);
 
-        // dd($cart_item);
+        $sum_price = Cart::getSumPrice($user_id);
 
-        $sum_price = DB::table('carts')
-            ->join('items', 'carts.item_id', '=', 'items.item_id')
-            ->where('carts.user_id', '=', $user_id)
-            ->sum(DB::raw('items.price * carts.amount'));
-
-        $sum_amount = DB::table('carts')
-            ->join('items', 'carts.item_id', '=', 'items.item_id')
-            ->where('carts.user_id', '=', $user_id)
-            ->sum('carts.amount');
+        $sum_amount = Cart::getSumAmount($user_id);
 
         $amounts = InitMaster::getAmount();
 
