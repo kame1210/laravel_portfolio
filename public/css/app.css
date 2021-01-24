@@ -10903,3 +10903,11 @@ a.text-dark:focus {
   }
 }
 
+ul {
+  list-style: none;
+}
+
+.card {
+  border: none;
+}
+

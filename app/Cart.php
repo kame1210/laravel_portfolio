@@ -18,10 +18,6 @@ class Cart extends Model
         'item_id',
     ];
 
-    // public function item(){
-    //     return $this->belongsTo('\App\Item', 'item_id', 'item_id');
-    // }
-
     public function item()
     {
         return $this->hasMany('App\Item', 'item_id', 'item_id');

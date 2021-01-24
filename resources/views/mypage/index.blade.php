@@ -6,12 +6,11 @@
 
   <div class="menu-box">
     <ul class="box">
-      <li class="box-title">会員情報</li>
+      <li class="box-title"><a href="{{ route('userInfo') }}">会員情報</a></li>
       <li>
         <i class="far fa-address-card fa-4x"></i>
       </li>
       <li>会員情報の確認</li>
-      <a href="{{ route('userInfo') }}">確認</a>
     </ul>
     <ul class="box">
       <li class="box-title">お気に入りリスト</li>
@@ -48,12 +47,19 @@
       <a href=""></a>
     </ul>
     <ul class="box">
-      <li class="box-title">ログアウト</li>
+      <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+      document.getElementById('logout-form').submit();">
+          {{ __('ログアウト') }}
+        </a></li>
+
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+      </form>
+      {{-- <li class="box-title"><a href="{{ route('logout') }}">ログアウト</a></li> --}}
       <li>
         <i class="fas fa-sign-out-alt fa-4x"></i>
       </li>
       <li>ログアウトします</li>
-      <a href=""></a>
     </ul>
   </div>
 </div>

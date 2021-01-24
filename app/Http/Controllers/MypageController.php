@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use App\User;
 use App\Like;
 use App\Item;
 use App\Order;
 use App\InitMaster;
+use App\Order_detail;
 
 class MypageController extends Controller
 {
@@ -25,8 +27,6 @@ class MypageController extends Controller
         $sex = InitMaster::getSex();
 
         $userData = User::find($user_id);
-
-        // var_dump($userData);
 
         return view('mypage.userInfo', compact('userData', 'sex'));
     }
@@ -50,16 +50,23 @@ class MypageController extends Controller
         $itemData = Item::where('user_id', $user_id)
             ->get();
 
-        return view('mypage.submitItemd
-        ', compact('itemData'));
+        return view('mypage.submitItem', compact('itemData'));
     }
 
-    public function orderHistory()
+    public function history()
     {
         $user_id = Auth::id();
 
-        // user_id = $user_id
-        // hasMany order_id = order_detail order_id;
+        // オーダー情報を取得
+        $orders = Order::where('user_id', $user_id)
+            ->get();
 
+        // オーダーに基くitemを取得
+        $item_data = Order::getItemData();
+
+        // order毎の合計金額を取得
+        $sum_prices = Order::getSumPrice();
+
+        return view('mypage.history', compact('orders', 'item_data', 'sum_prices'));
     }
 }

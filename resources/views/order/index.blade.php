@@ -19,8 +19,6 @@
         <p class="user-data">{{$user_data->email}}</p>
         <p class="label">電話番号</p>
         <p class="user-data">{{$user_data->tel}}</p>
-        <p class="label">パスワード</p>
-        <p class="user-data">********</p>
       </div>
     </div>
 
@@ -51,11 +49,13 @@
 
   <div class="row">
     <div class="col">
-      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{ env('STRIPE_KEY') }}"
-        data-amount="{{$sum_price}}}" data-locale="auto" data-label="購入を確定する" data-currency="jpy">
-      </script>
-      <input type="hidden" name="sum_price" value="{{$sum_price}}">
-      <input type="hidden" name="sum_amount" value="{{ $sum_amount }}">
+      <form action="/charge" method="post">
+        @csrf
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{ env('STRIPE_KEY') }}"
+          data-amount="{{$sum_price}}}" data-locale="auto" data-label="購入を確定する" data-currency="jpy">
+        </script>
+        <input type="hidden" name="sum_price" value="{{$sum_price}}">
+        <input type="hidden" name="sum_amount" value="{{ $sum_amount }}">
       </form>
     </div>
   </div>

@@ -26,11 +26,16 @@ class Item extends Model
         'user_id',
     ];
 
-    public function carts(){
+    public function carts()
+    {
         return $this->hasMany('App\Cart', 'item_id');
     }
 
 
+    public function order_detail()
+    {
+        return $this->belongsTo('App\Order_detail', 'item_id', 'item_id');
+    }
 
     // public static function getItemDetail($item_id){
     //     return DB::find($item_id)->toArray();

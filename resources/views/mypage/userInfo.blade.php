@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <div class="container">
   <div class="meminfo-list">
     <p class="meminfo-title">お名前(氏名)</p>
@@ -51,3 +54,4 @@
       <a href="">退会する</a>
     </p>
 </div>
+@endsection

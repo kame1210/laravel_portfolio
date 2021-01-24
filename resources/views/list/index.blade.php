@@ -1,4 +1,4 @@
-@extends('layout.layout')
+@extends('layouts.app')
 @extends('layout.category_menu')
 
 @section('content')

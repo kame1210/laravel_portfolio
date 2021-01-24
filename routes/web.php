@@ -63,8 +63,13 @@ Route::get('/mypage/likeItem', 'MypageController@likeItem')->name('likeItem');
 
 Route::get('/mypage/submitItem', 'MypageController@submitItem')->name('submitItem');
 
+Route::get('/mypage/history', 'MypageController@history')->name('history');
+
 Route::post('/like', 'LikeController@like')->name('like');
 
+Route::post('/charge', 'ChargeController@charge')->name('charge');
+
+Route::get('/order/complete', 'OrderController@complete')->name('complete');
 
 
 // Route::get('mail/pre', function () {

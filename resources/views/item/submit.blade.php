@@ -1,4 +1,5 @@
-@extends('layout.layout')
+@extends('layouts.app')
+
 @section('content')
 <div class="container">
   <form action="{{ route('submit') }}" method="post" enctype="multipart/form-data">
@@ -54,9 +55,10 @@
       <label for="price" class="col-md-4">{{ __('サブカテゴリー')}} </label>
 
       @foreach ($subcategories as $subcategory)
-      <input type="radio" name="subcategory" value="{{$subcategory['subctg_id']}}" id="subcategory_{{$subcategory['subctg_id']}}"
-        class="radio col-md-1">
-      <label for="subcategory_{{$subcategory['subctg_id']}}" class="radio col-md-1">{{$subcategory['category_name']}}</label>
+      <input type="radio" name="subcategory" value="{{$subcategory['subctg_id']}}"
+        id="subcategory_{{$subcategory['subctg_id']}}" class="radio col-md-1">
+      <label for="subcategory_{{$subcategory['subctg_id']}}"
+        class="radio col-md-1">{{$subcategory['category_name']}}</label>
       @endforeach
 
       @error('subcategory')
