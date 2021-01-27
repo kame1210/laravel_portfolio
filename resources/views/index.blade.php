@@ -35,7 +35,7 @@
             <h2 class="ctg-name">{{ $categories[0]['category_name'] }}</h2>
           </div>
         </div>
-        <div class="row">
+        <div class="d-flex row">
           @foreach ($items as $item)
           <div class="col-md-3 item">
             <div class="card" style="width:17rem;">
@@ -49,9 +49,11 @@
                 <p class="card-text price">&yen;{{floor($item['price'])}}</p>
                 <div class="card-text likes">
                   <div class="btn-like" data-item-id="{{$item['item_id']}}">
-                    @if(My_function::like_exists(Auth::id(), 1))
-                    <i class="fas red fa-heart" style="color:red;">
-                      <span>
+                    {{-- @if(Like::likeExists($item['item_id'])) --}}
+                    {{-- @if(My_function::like_exists(Auth::id(),$item['item_id'])) --}}
+                    @if(App\Like::likeExists($item['item_id']))
+                    <i class="fas fa-heart red">
+                      <span style="color:black;">
                         @foreach ($like_count as $like)
                         @if ($like['item_id'] === $item['item_id'])
                         {{ $like['likes'] }}

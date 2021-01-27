@@ -1,5 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+body {
+  background-color: white;
+}
+
+ul {
+  list-style: none;
+}
+
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -10903,11 +10911,15 @@ a.text-dark:focus {
   }
 }
 
-ul {
-  list-style: none;
-}
-
 .card {
   border: none;
+}
+
+.item {
+  padding-top: 10px;
+}
+
+.red {
+  color: red;
 }
 
