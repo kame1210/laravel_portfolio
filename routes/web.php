@@ -71,6 +71,7 @@ Route::post('/charge', 'ChargeController@charge')->name('charge');
 
 Route::get('/order/complete', 'OrderController@complete')->name('complete');
 
+Route::get('/twitter/test', 'TwitterController@test');
 
 // Route::get('mail/pre', function () {
 //   return new \App\Mail\ContactMail();

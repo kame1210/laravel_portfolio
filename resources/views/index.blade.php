@@ -2,7 +2,7 @@
 
 @section('content')
 <div id="index-wrapper">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
         <div id="top-image"><img src="/storage/images/3835521_m.jpg" alt="" style="width:100%;heght:100%;"></div>
@@ -37,6 +37,58 @@
         </div>
         <div class="d-flex row">
           @foreach ($items as $item)
+          <div class="col-md-3 col-sm-4 item">
+            <div class="card" style="width:17rem;">
+              <a href="{!! url('item/detail/' . $item['item_id']) !!}">
+                <img src="/storage/uploads/{{ $item['image'] }}" class="card-img-top" width="100%" height="180"
+                  alt="{{$item['image']}}"></a>
+              <div class="card-body">
+                <h5 class="card-title name">
+                  <a href="{!! url('item/detail/' . $item['item_id']) !!}">{{ $item['item_name'] }}</a>
+                </h5>
+                <p class="card-text price">&yen;{{floor($item['price'])}}</p>
+                <div class="card-text likes">
+                  <div class="btn-like" data-item-id="{{$item['item_id']}}">
+                    @if(App\Like::likeExists($item['item_id']))
+                    <i class="fas fa-heart red">
+                      <span style="color:black;">
+                        @foreach ($like_count as $like)
+                        @if ($like['item_id'] === $item['item_id'])
+                        {{ $like['likes'] }}
+                        @endif
+                        @endforeach
+                      </span>
+                    </i>
+                    @else
+                    <i class="far fa-heart">
+                      <span>
+                        @foreach ($like_count as $like)
+                        @if ($like['item_id'] === $item['item_id'])
+                        {{ $like['likes'] }}
+                        @endif
+                        @endforeach
+                      </span>
+                    </i>
+                    @endif
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          @endforeach
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="ctg-name">{{ $categories[1]['category_name'] }}</h2>
+          </div>
+        </div>
+        <div class="d-flex row">
+          @foreach ($howtoItems as $item)
           <div class="col-md-3 item">
             <div class="card" style="width:17rem;">
               <a href="{!! url('item/detail/' . $item['item_id']) !!}">
@@ -49,8 +101,58 @@
                 <p class="card-text price">&yen;{{floor($item['price'])}}</p>
                 <div class="card-text likes">
                   <div class="btn-like" data-item-id="{{$item['item_id']}}">
-                    {{-- @if(Like::likeExists($item['item_id'])) --}}
-                    {{-- @if(My_function::like_exists(Auth::id(),$item['item_id'])) --}}
+                    @if(App\Like::likeExists($item['item_id']))
+                    <i class="fas fa-heart red">
+                      <span style="color:black;">
+                        @foreach ($like_count as $like)
+                        @if ($like['item_id'] === $item['item_id'])
+                        {{ $like['likes'] }}
+                        @endif
+                        @endforeach
+                      </span>
+                    </i>
+                    @else
+                    <i class="far fa-heart">
+                      <span>
+                        @foreach ($like_count as $like)
+                        @if ($like['item_id'] === $item['item_id'])
+                        {{ $like['likes'] }}
+                        @endif
+                        @endforeach
+                      </span>
+                    </i>
+                    @endif
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          @endforeach
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="ctg-name">{{ $categories[2]['category_name'] }}</h2>
+          </div>
+        </div>
+        <div class="d-flex row">
+          @foreach ($eventItems as $item)
+          <div class="col-md-3 item">
+            <div class="card" style="width:17rem;">
+              <a href="{!! url('item/detail/' . $item['item_id']) !!}">
+                <img src="/storage/uploads/{{ $item['image'] }}" class="card-img-top" width="100%" height="180"
+                  alt="{{$item['image']}}"></a>
+              <div class="card-body">
+                <h5 class="card-title name">
+                  <a href="{!! url('item/detail/' . $item['item_id']) !!}">{{ $item['item_name'] }}</a>
+                </h5>
+                <p class="card-text price">&yen;{{floor($item['price'])}}</p>
+                <div class="card-text likes">
+                  <div class="btn-like" data-item-id="{{$item['item_id']}}">
                     @if(App\Like::likeExists($item['item_id']))
                     <i class="fas fa-heart red">
                       <span style="color:black;">
@@ -83,50 +185,6 @@
     </div>
 
     {{-- <div class="row block-item">
-      <h2 class="ctg-name">{{ $categories[0]['category_name'] }}</h2>
-    <div class="item-list row">
-      @foreach ($items as $item)
-      <div class="col-md-3 item">
-        <ul>
-          <li class="image">
-            <a href="{!! url('item/detail/' . $item['item_id']) !!}">
-              <img src="/storage/uploads/{{ $item['image'] }}" alt="{{$item['image']}}"></a>
-          </li>
-          <li class="name">
-            <a href="{!! url('item/detail/' . $item['item_id']) !!}">{{ $item['item_name'] }}</a>
-          </li>
-          <li class="price">&yen;{{floor($item['price'])}}</li>
-          <li class="likes">
-            <div class="btn-like" data-item-id="{{$item['item_id']}}">
-              @if(My_function::like_exists(Auth::id(), 1))
-              <i class="fas red fa-heart" style="color:red;">
-                <span>
-                  @foreach ($like_count as $like)
-                  @if ($like['item_id'] === $item['item_id'])
-                  {{ $like['likes'] }}
-                  @endif
-                  @endforeach
-                </span>
-              </i>
-              @else
-              <i class="far fa-heart">
-                <span>
-                  @foreach ($like_count as $like)
-                  @if ($like['item_id'] === $item['item_id'])
-                  {{ $like['likes'] }}
-                  @endif
-                  @endforeach
-                </span>
-              </i>
-              @endif
-          </li>
-        </ul>
-      </div>
-      @endforeach
-    </div>
-  </div> --}}
-
-  <div class="row block-item">
     <h2 class="ctg-name">{{ $categories[1]['category_name'] }}</h2>
     <div class="item-list">
       @foreach ($howtoItems as $item)
@@ -184,7 +242,6 @@
             <a href="{!! url('item/detail/' . $item['item_id']) !!}">{{ $item['item_name'] }}</a>
           </li>
           <li class="price">&yen;{{floor($item['price'])}}</li>
-          {{-- {% include "viewlikes.html.twig" %} --}}
           <li class="likes">
             <div class="btn-like" data-item-id="{{$item['item_id']}}">
               @if(My_function::like_exists(Auth::id(), 1))
@@ -215,8 +272,52 @@
     </div>
   </div>
 </div>
-</div>
+</div> --}}
 @endsection
+
+{{-- <div class="row block-item">
+      <h2 class="ctg-name">{{ $categories[0]['category_name'] }}</h2>
+<div class="item-list row">
+  @foreach ($items as $item)
+  <div class="col-md-3 item">
+    <ul>
+      <li class="image">
+        <a href="{!! url('item/detail/' . $item['item_id']) !!}">
+          <img src="/storage/uploads/{{ $item['image'] }}" alt="{{$item['image']}}"></a>
+      </li>
+      <li class="name">
+        <a href="{!! url('item/detail/' . $item['item_id']) !!}">{{ $item['item_name'] }}</a>
+      </li>
+      <li class="price">&yen;{{floor($item['price'])}}</li>
+      <li class="likes">
+        <div class="btn-like" data-item-id="{{$item['item_id']}}">
+          @if(My_function::like_exists(Auth::id(), 1))
+          <i class="fas red fa-heart" style="color:red;">
+            <span>
+              @foreach ($like_count as $like)
+              @if ($like['item_id'] === $item['item_id'])
+              {{ $like['likes'] }}
+              @endif
+              @endforeach
+            </span>
+          </i>
+          @else
+          <i class="far fa-heart">
+            <span>
+              @foreach ($like_count as $like)
+              @if ($like['item_id'] === $item['item_id'])
+              {{ $like['likes'] }}
+              @endif
+              @endforeach
+            </span>
+          </i>
+          @endif
+      </li>
+    </ul>
+  </div>
+  @endforeach
+</div>
+</div> --}}
 
 
 {{-- <button class="ctg-btn" type="button">
