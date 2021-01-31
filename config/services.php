@@ -36,4 +36,10 @@ return [
         'secret' => env('sk_test_51HcQCEAEQxypqTIDWTnbqsY9dMy1uXs137aNnbn5D2QpmoXoHlgJ7VibE29m8KWd31gTdZo9x3M3cHkhYNmo95Hz00zRMqC6My'),
     ],
 
+    'twitter' => [
+        'client_id' => env('TWITTER_CONSUMER_KEY'),
+        'client_secret' => env('TWITTER_CONSUMER_SECRET'),
+        'redirect' => env('TWITTER_REDIRECT'),
+    ],
+
 ];

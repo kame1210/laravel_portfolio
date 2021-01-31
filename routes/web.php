@@ -73,6 +73,10 @@ Route::get('/order/complete', 'OrderController@complete')->name('complete');
 
 Route::get('/twitter/test', 'TwitterController@test');
 
+Route::get('/twitter/login', 'TwitterController@redirectToProvider');
+
+Route::get('/twitter/callback', 'TwitterController@redirectToProvider');
+
 // Route::get('mail/pre', function () {
 //   return new \App\Mail\ContactMail();
 // });

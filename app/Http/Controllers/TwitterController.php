@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Abraham\TwitterOAuth\TwitterOAuth;
+// use laravel\Socialite\Facades\Socialite;
+use Socialite;
 
 class TwitterController extends Controller
 {
@@ -23,9 +25,23 @@ class TwitterController extends Controller
             array("status" => "テスト投稿")
         );
 
-        var_dump($result);
 
         // DBに登録されたitemデータを取得し、サイトリンクと共にtwitterに投稿する。
         // twitterと連携し、そのアカウントでデータを投稿する。
+    }
+
+
+    // テスト 一度目の処理以降、進まない。
+    public function redirectToProvider()
+    {
+        return Socialite::driver('twitter')->redirect();
+    }
+
+    public function handleProviderCallback()
+    {
+        $user = Socialite::driver('twitter')->user();
+
+        dd($user);
+        // return Socialite::driver('twitter')->user();
     }
 }
