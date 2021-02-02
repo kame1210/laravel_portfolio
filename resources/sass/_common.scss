@@ -1,0 +1,17 @@
+// 共通レイアウト
+body {
+  background-color: white !important;
+}
+
+ul {
+  list-style: none;
+}
+
+h5{
+  padding:0;
+  color:$font_color;
+}
+
+.container-fluid {
+  padding: 0;
+}

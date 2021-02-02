@@ -166,6 +166,9 @@ return [
          * Package Service Providers...
          */
 
+        Laravel\Socialite\SocialiteServiceProvider::class,
+
+
         /*
          * Application Service Providers...
          */
@@ -175,7 +178,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         // \SocialiteProviders\Manager\SeviceProvirder::class,
-        \SocialiteProviders\Manager\ServiceProvider::class,
     ],
 
     /*

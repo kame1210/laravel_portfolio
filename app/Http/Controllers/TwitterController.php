@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Abraham\TwitterOAuth\TwitterOAuth;
-// use laravel\Socialite\Facades\Socialite;
 use Socialite;
 
 class TwitterController extends Controller
@@ -39,7 +38,7 @@ class TwitterController extends Controller
 
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('twitter')->user();
+        $user = Socialite::driver('twitter')->userFromTokenAndSecret(config('twitter.access_token'), config('twitter.access_token_secret'));
 
         dd($user);
         // return Socialite::driver('twitter')->user();

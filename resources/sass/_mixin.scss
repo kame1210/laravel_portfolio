@@ -1,0 +1,6 @@
+// ブレイクポイントの設定
+@mixin bq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}

@@ -2,7 +2,7 @@
 $body-bg: #f8fafc;
 
 // Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
+$font-family-sans-serif: "Nunito", sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
@@ -18,10 +18,13 @@ $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
 
-body {
-  background-color: white;
-}
-
-ul {
-  list-style: none;
-}
+$font_color: #333;
+    
+// breakpoint
+$breakpoints: (
+  "xs": "screen and (max-width : 544px)",
+  "sm": "screen and (max-width : 768px) and (min-width : 544px)",
+  "md": "screen and (max-width : 992px) and (min-width : 768px)",
+  "lg": "screen and (max-width : 1200px) and (min-width : 992px)",
+  "xl": "screen and (min-width : 1200px)",
+);
