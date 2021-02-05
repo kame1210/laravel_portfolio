@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 use App\Category;
 use App\Subcategory;
 use App\Item;
-
+use App\Like;
 // use App\User;
 
 class ListController extends Controller
@@ -47,7 +48,11 @@ class ListController extends Controller
             $items = Item::all()->toArray();
         }
 
-        return view('list.index', compact('items', 'categories', 'subcategories'));
+        $like_count = Like::select('item_id', DB::raw('count(user_id) as likes'))
+        ->groupby('item_id')
+        ->get();
+
+        return view('list.index', compact('items', 'categories', 'subcategories', 'like_count'));
     }
 }
 

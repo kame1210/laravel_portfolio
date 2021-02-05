@@ -10,9 +10,10 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <p class="topic-message">当サイトは、個人の趣味を充実させる。<br>
-          個人の趣味を世界に広げて行くためのサイトです。<br>
+        <p class="topic-message">
           あなたが興味がある分野や、キーワードを入力してください。
+          {{-- 当サイトは、個人の趣味を充実させる。<br>
+          個人の趣味を世界に広げて行くためのサイトです。<br> --}}
         </p>
       </div>
     </div>
@@ -56,6 +57,9 @@
           </div>
           @endforeach
         </div>
+        <div class="button">
+          <a href="{{ route('list') }}" class="btn btn-outline-dark">more</a>
+        </div>
       </div>
     </div>
 
@@ -87,6 +91,9 @@
           </div>
           @endforeach
         </div>
+        <div class="button">
+          <a href="{{ route('list') }}" class="btn btn-outline-dark">more</a>
+        </div>
       </div>
     </div>
 
@@ -108,7 +115,6 @@
                   <a href="{!! url('item/detail/' . $item['item_id']) !!}">{{ $item['item_name'] }}</a>
                 </h5>
                 <div class="flex">
-
                   <p class="card-text price">&yen;{{floor($item['price'])}}</p>
                   <div class="card-text likes">
                     @include('like')
@@ -118,6 +124,9 @@
             </div>
           </div>
           @endforeach
+        </div>
+        <div class="button">
+          <a href="{{ route('list') }}" class="btn btn-outline-dark mx-auto">more</a>
         </div>
       </div>
     </div>

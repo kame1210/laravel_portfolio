@@ -69,8 +69,16 @@
     </div>
 
     <div class="form-group row">
-      <label for="image" class="col-md-4">{{ __('サムネイル')}} </label>
-      <input type="file" name="image" value="{{ old('image') }}" class="col-md-8" required>
+      <p class="col-md-4">{{ __('サムネイル1')}} </p>
+      <input type="file" name="image[]" value="{{ old('image') }}" class="col-md-8" required>
+      <p class="col-md-4">{{ __('サムネイル2')}} </p>
+      <input type="file" name="image[]" value="{{ old('image') }}" class="col-md-8">
+      <p class="col-md-4">{{ __('サムネイル3')}} </p>
+      <input type="file" name="image[]" value="{{ old('image') }}" class="col-md-8">
+      <p class="col-md-4">{{ __('サムネイル4')}} </p>
+      <input type="file" name="image[]" value="{{ old('image') }}" class="col-md-8">
+      <p class="col-md-4">{{ __('サムネイル5')}} </p>
+      <input type="file" name="image[]" value="{{ old('image') }}" class="col-md-8">
 
       @error('image')
       <span class="invalid-feedback" role="alert">

@@ -10965,3 +10965,11 @@ a.text-dark:focus {
   }
 }
 
+.button {
+  text-align: center;
+}
+
+.button a {
+  display: inline-block;
+}
+

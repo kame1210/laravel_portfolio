@@ -47,10 +47,15 @@ class MypageController extends Controller
     {
         $user_id = Auth::id();
 
-        $itemData = Item::where('user_id', $user_id)
+        $item_data = Item::where('user_id', $user_id)
             ->get();
 
-        return view('mypage.submitItem', compact('itemData'));
+
+        for ($i = 0; $i < count($item_data); $i++) {
+            $item_data[$i]['image'] = explode(',', $item_data[$i]['image']);
+        }
+
+        return view('mypage.submitItem', compact('item_data'));
     }
 
     public function history()
