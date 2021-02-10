@@ -5,15 +5,13 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <div id="top-image"><img src="/storage/images/3835521_m.jpg" alt="" style="width:100%;heght:100%;"></div>
+        <img class="top-image" src="/storage/images/3835521_m.jpg" alt="" style="width:100%;heght:100%;">
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
         <p class="topic-message">
           あなたが興味がある分野や、キーワードを入力してください。
-          {{-- 当サイトは、個人の趣味を充実させる。<br>
-          個人の趣味を世界に広げて行くためのサイトです。<br> --}}
         </p>
       </div>
     </div>
@@ -41,7 +39,7 @@
           <div class="col-sm-4 col-md-3 item">
             <div class="card">
               <a href="{!! url('item/detail/' . $item['item_id']) !!}">
-                <img src="/storage/uploads/{{ $item['image'] }}" class="card-img-top" alt="{{$item['image']}}"></a>
+                <img src="/storage/uploads/{{ $item['image'][0] }}" class="card-img-top" alt="{{$item['image'][0]}}"></a>
               <div class="card-body">
                 <h5 class="card-title name">
                   <a href="{!! url('item/detail/' . $item['item_id']) !!}">{{ $item['item_name'] }}</a>
@@ -75,7 +73,7 @@
           <div class="col-md-3 item">
             <div class="card">
               <a href="{!! url('item/detail/' . $item['item_id']) !!}">
-                <img src="/storage/uploads/{{ $item['image'] }}" class="card-img-top" alt="{{$item['image']}}"></a>
+                <img src="/storage/uploads/{{ $item['image'][0] }}" class="card-img-top" alt="{{$item['image'][0]}}"></a>
               <div class="card-body">
                 <h5 class="card-title name">
                   <a href="{!! url('item/detail/' . $item['item_id']) !!}">{{ $item['item_name'] }}</a>
@@ -109,7 +107,7 @@
           <div class="col-sm-3 col-md-3 item">
             <div class="card">
               <a href="{!! url('item/detail/' . $item['item_id']) !!}">
-                <img src="/storage/uploads/{{ $item['image'] }}" class="card-img-top" alt="{{$item['image']}}"></a>
+                <img src="/storage/uploads/{{ $item['image'][0] }}" class="card-img-top" alt="{{$item['image'][0]}}"></a>
               <div class="card-body">
                 <h5 class="card-title name">
                   <a href="{!! url('item/detail/' . $item['item_id']) !!}">{{ $item['item_name'] }}</a>

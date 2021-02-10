@@ -24,19 +24,22 @@
             </p>
           </div>
         </summary>
-        <div class="box">
+        <div class="row">
           @foreach ($item_data as $item)
           @if ($item->order_id = $order->order_id)
-          <ul class="item">
-            <li class="image"><img src="/storage/uploads/{{ $item->image }}"></li>
-            <li class="name">{{$item->item_name}}</li>
-            <li class="price">{{ floor($item->price) }}</li>
-            <li class="quantity">数量:{{$item->amount}}</li>
-            <li class="item-detail">
-              <a href="">商品画面へ</a>
-            </li>
-            <li></li>
-          </ul>
+          <div class="col-md-3">
+            <div class="card">
+              <img src="/storage/uploads/{{ $item->image }}" class="card-img-top">
+              <div class="card-body">
+                <div class="card-title name">{{$item->item_name}}</div>
+                <div class="card-text price">{{ floor($item->price) }}</div>
+                <div class="card-text amount">数量:{{$item->amount}}</div>
+                <div class="item-detail">
+                  <a href="">商品画面へ</a>
+                </div>
+              </div>
+            </div>
+          </div>
           @endif
           @endforeach
         </div>

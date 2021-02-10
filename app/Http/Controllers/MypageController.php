@@ -72,6 +72,11 @@ class MypageController extends Controller
         // order毎の合計金額を取得
         $sum_prices = Order::getSumPrice();
 
-        return view('mypage.history', compact('orders', 'item_data', 'sum_prices'));
+        // いいねを取得
+        $like_count = Like::select('item_id', DB::raw('count(user_id) as likes'))
+        ->groupby('item_id')
+        ->get();
+
+        return view('mypage.history', compact('orders', 'item_data', 'sum_prices', 'like_count'));
     }
 }
