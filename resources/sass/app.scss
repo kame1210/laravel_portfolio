@@ -23,7 +23,7 @@
 }
 
 .item {
-  padding-top: 20px;
+  margin-top: 20px;
 }
 
 .red {
@@ -39,7 +39,7 @@
 }
 
 // index
-.card {
+.item {
   width: 17rem;
   @include bq(sm) {
     width: 14rem;
@@ -63,4 +63,15 @@
 .top-image {
   width: 100%;
   height: 100%;
+}
+
+
+.mypage-item-submit{
+  .button-right{
+    text-align: right;
+  }
+}
+
+.sex_form{
+  width:50% !important;
 }

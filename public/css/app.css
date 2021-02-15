@@ -20,7 +20,7 @@ h5 {
 .container-lg,
 .container-md,
 .container-sm {
-  padding: 0;
+  padding: 0 !important;
 }
 
 /*!
@@ -10936,7 +10936,7 @@ a.text-dark:focus {
 }
 
 .item {
-  padding-top: 20px;
+  margin-top: 20px;
 }
 
 .red {
@@ -10951,23 +10951,23 @@ a.text-dark:focus {
   margin: 0 0 0 auto;
 }
 
-.card {
+.item {
   width: 17rem;
 }
 
 @media screen and (max-width : 768px) and (min-width : 544px) {
-  .card {
+  .item {
     width: 14rem;
   }
 }
 
-.card img {
+.item img {
   width: 100%;
   height: 180px;
 }
 
 @media screen and (max-width : 768px) and (min-width : 544px) {
-  .card img {
+  .item img {
     height: 155px;
   }
 }
@@ -10983,5 +10983,13 @@ a.text-dark:focus {
 .top-image {
   width: 100%;
   height: 100%;
+}
+
+.mypage-item-submit .button-right {
+  text-align: right;
+}
+
+.sex_form {
+  width: 50% !important;
 }
 

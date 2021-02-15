@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center content">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('新規会員登録') }}</div>
@@ -14,7 +14,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('名前(氏)') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
                                     name="family_name" value="{{ old('family_name') }}" required
                                     autocomplete="family_name" autofocus>
@@ -30,7 +30,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('名前(名)') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
                                     name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name"
                                     autofocus>
@@ -47,7 +47,7 @@
                             <label for="family_name_kana"
                                 class="col-md-4 col-form-label text-md-right">{{ __('なまえ(氏)') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <input id="family_name_kana" type="text"
                                     class="form-control @error('family_name_kana') is-invalid @enderror"
                                     name="family_name_kana" value="{{ old('family_name_kana') }}"
@@ -64,7 +64,7 @@
                             <label for="first_name_kana"
                                 class="col-md-4 col-form-label text-md-right">{{ __('なまえ(名)') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <input id="first_name_kana" type="text"
                                     class="form-control @error('first_name_kana') is-invalid @enderror"
                                     name="first_name_kana" value="{{ old('first_name_kana') }}"
@@ -83,9 +83,9 @@
 
                             <div class="row">
                                 @foreach ($sexArr as $index => $label)
-                                <div class="col-md-6">
+                                <div class="col-md-7">
                                     <input id="sex_{{ $index }}" type="radio"
-                                        class="form-control @error('sex') is-invalid @enderror" name="sex"
+                                        class="sex_form form-control @error('sex') is-invalid @enderror" name="sex"
                                         value="{{ $index }}" required autocomplete="sex" style="font-size:16px;">
                                     <label for="sex_{{$index}}">{{$label}}</label>
                                 </div>
@@ -149,7 +149,7 @@
                         <div class="form-group row">
                             <label for="zip" class="col-md-4 col-form-label text-md-right">{{ __('郵便番号') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <input id="zip" type="zip" class="form-control @error('zip') is-invalid @enderror"
                                     name="zip" value="{{ old('zip') }}" required autocomplete="zip">
 
@@ -163,7 +163,7 @@
                         <div class="form-group row">
                             <label for="address1" class="col-md-4 col-form-label text-md-right">{{ __('住所1') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <input id="address1" type="address1"
                                     class="form-control @error('address1') is-invalid @enderror" name="address1"
                                     value="{{ old('address1') }}" required autocomplete="address1">
@@ -178,7 +178,7 @@
                         <div class="form-group row">
                             <label for="address2" class="col-md-4 col-form-label text-md-right">{{ __('住所2') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <input id="address2" type="address2"
                                     class="form-control @error('address2') is-invalid @enderror" name="address2"
                                     value="{{ old('address2') }}" autocomplete="address2">
@@ -193,7 +193,7 @@
                         <div class="form-group row">
                             <label for="tel" class="col-md-4 col-form-label text-md-right">{{ __('電話番号') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <input id="tel" type="tel" class="form-control @error('tel') is-invalid @enderror"
                                     name="tel" value="{{ old('tel') }}" required autocomplete="tel">
 
@@ -208,7 +208,7 @@
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('メールアドレス') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                                     name="email" value="{{ old('email') }}" required autocomplete="email">
 
@@ -224,7 +224,7 @@
                             <label for="password"
                                 class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <input id="password" type="password"
                                     class="form-control @error('password') is-invalid @enderror" name="password"
                                     required autocomplete="new-password">
@@ -241,16 +241,16 @@
                             <label for="password-confirm"
                                 class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <input id="password-confirm" type="password" class="form-control"
                                     name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-7 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('登録') }}
                                 </button>
                             </div>
                         </div>

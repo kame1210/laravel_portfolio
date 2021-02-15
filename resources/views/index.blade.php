@@ -37,7 +37,7 @@
         <div class="d-flex row">
           @foreach ($items as $item)
           <div class="col-sm-4 col-md-3 item">
-            <div class="card">
+            <div class="card item">
               <a href="{!! url('item/detail/' . $item['item_id']) !!}">
                 <img src="/storage/uploads/{{ $item['image'][0] }}" class="card-img-top" alt="{{$item['image'][0]}}"></a>
               <div class="card-body">
@@ -71,7 +71,7 @@
         <div class="d-flex row">
           @foreach ($howtoItems as $item)
           <div class="col-md-3 item">
-            <div class="card">
+            <div class="card item">
               <a href="{!! url('item/detail/' . $item['item_id']) !!}">
                 <img src="/storage/uploads/{{ $item['image'][0] }}" class="card-img-top" alt="{{$item['image'][0]}}"></a>
               <div class="card-body">
@@ -105,7 +105,7 @@
         <div class="d-flex row">
           @foreach ($eventItems as $item)
           <div class="col-sm-3 col-md-3 item">
-            <div class="card">
+            <div class="card item">
               <a href="{!! url('item/detail/' . $item['item_id']) !!}">
                 <img src="/storage/uploads/{{ $item['image'][0] }}" class="card-img-top" alt="{{$item['image'][0]}}"></a>
               <div class="card-body">

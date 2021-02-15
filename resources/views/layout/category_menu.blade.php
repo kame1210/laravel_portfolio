@@ -1,4 +1,4 @@
-<div class="container">
+<div class="col-md-3">
   <h2>カテゴリーで絞込み</h2>
 
   <form action="{{ route('list') }}" method="get">

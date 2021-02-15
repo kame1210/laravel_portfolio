@@ -3,6 +3,10 @@
 @section('content')
 <div id="list-wrapper">
 	<div class="container">
+		<div class="row">
+
+			
+		</div>
 		{{-- モーダルウィンドウ --}}
 		{{-- <p class="pop-up-p">
 				<a data-remodal-target="modal" class="pop-up">絞込み</a>
